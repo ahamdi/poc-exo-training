@@ -1,0 +1,119 @@
+// v1.3.1
+
+// Settings
+elf = {
+  gutter: 30px
+  content-direction: 'LTR'
+}
+
+/**
+ * Return the configured layout direction for floats etc.
+ * @return {string} result - The direction in left/right format.
+ */
+elf-get-layout-direction()
+  elf.content-direction == LTR ? result = left : result = right
+  return result
+
+/**
+ * Set up the layout direction.
+ */
+direction = elf-get-layout-direction()
+opposite = opposite-position(direction)
+
+/**
+ * Enable debugging environment that applies a translucent background to every element on the page.
+ * @param {string} [color=blue] - The color to be lightened in the debugging environment.
+ */
+debug(color = blue)
+  *
+    background: rgba(color, 10%)
+
+/**
+ * Set an element's width and margin-right gutter by ratio.
+ * @param {number} [ratio=1] - A width relative to its container as a fraction.
+ * @param {string} [gutter=elf.gutter] - Specify the gutter width as any unit.
+ */
+column(ratio = 1, gutter = elf.gutter)
+  float: direction
+  width: s('calc(100% * %s - %s + %s * %s)', ratio, gutter, ratio, gutter)
+  margin-{opposite}: gutter
+  &:last-child
+    margin-{opposite}: 0
+
+/**
+ * Make elements automatically drop down a row when the specified item is reached.
+ * @param {number} [item=0] - Item to be the last in the row.
+ * @param {string} [uncycle=0] - Cycle to be reset. Useful in media queries.
+ * @param {string} [gutter=elf.gutter] - Specify the gutter width as any unit.
+ */
+cycle(item = 0, uncycle = 0, gutter = elf.gutter)
+  if uncycle > 0
+    &:nth-child({uncycle}n)
+      margin-{opposite}: gutter
+  &:nth-child({item}n)
+    margin-{opposite}: 0
+
+/**
+ * Offset elements from one another.
+ * @param {number} [ratio=0] - Fraction to be used to offset.
+ * @param {bool} [column=true] - Are you offsetting a column or a span element?
+ * @param {string} [gutter=elf.gutter] - Specify the gutter width as any unit.
+ */
+offset(ratio = 0, column = true, gutter = elf.gutter)
+  if column is true
+    if ratio >= 0
+      margin-{direction}: s('calc(100% * %s + %s * %s)', ratio, ratio, gutter)
+    else
+      margin-{opposite}: s('calc(-100% * %s - %s * %s + %s)', ratio, ratio, gutter, gutter)
+  else
+    if ratio >= 0
+      margin-{direction}: s('calc(100% * %s)', ratio)
+    else
+      margin-{opposite}: s('calc(-100% * %s)', ratio)
+
+
+/**
+ * Set an element's width as a fraction.
+ * @param {number} [ratio=1] - A width relative to its container as a fraction.
+ */
+span(ratio = 1)
+  float: direction
+  width: s('calc(100% * %s)', ratio)
+
+/**
+ * Useful for source ordering. Shift elements to the left and right with positive and negative integers.
+ * @param {number} [ratio=0] - Fraction to be used in the shift.
+ * @param {bool} [column=true] - Are you shifting a column or a span element?
+ * @param {string} [gutter=elf.gutter] - Specify the gutter width as any unit.
+ */
+shift(ratio = 1, column = true, gutter = elf.gutter)
+  position: relative
+
+  if column is true
+    translate = s('calc(100% * %s + %s * %s)', ratio, ratio, gutter)
+  else
+    translate = s('calc(100% * %s)', ratio)
+
+  {direction}: translate
+
+/**
+ * Useful for source ordering. Removes affects applied by shift().
+ */
+unshift()
+  position: static
+  {direction}: 0
+
+/**
+ * Apply this mixin to containing elements in order to add flexbox centering to any children elements.
+ * @param {string} [direction=both] - Accepts 'both', 'vertical', or 'horizontal'.
+ */
+align-children(direction = both)
+  display: flex
+  flex-wrap: wrap
+  if direction is both
+    justify-content: center
+    align-items: center
+  if direction is vertical
+    align-items: center
+  if direction is horizontal
+    justify-content: center

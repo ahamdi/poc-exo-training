@@ -1,0 +1,498 @@
+@require 'normalize'
+@require 'elf'
+
+normalize()
+
+@require 'pygments'
+.ln
+    font-size 0.7em
+    margin-right 1em
+
+cor_titulo = #007FFB
+cor_subtitulo = #777
+cor_texto = #545454
+literal_background = rgba(0, 0, 0, 0.15)
+cor_code = #343434
+cor_destaque = #c53600
+
+vertical_align()
+    position absolute
+    top 50%
+    left 50%
+    margin 0
+    margin-right -50%
+    transform translate(-50%, -50%)
+
+html
+    text-rendering optimizeLegibility
+    font-family "Open Sans", Helvetica, Arial, sans-serif
+
+.condensed
+    font-family "Open Sans Condensed", Helvetica, Arial, sans-serif
+
+
+body
+    background white
+    overflow hidden
+
+a
+    color cor_titulo
+    text-decoration none
+    padding 0 0.1em
+    background rgba(255, 255, 255, 0.5)
+    border-radius 0.2em
+    &:hover
+        text-decoration underline
+
+
+deck
+    position relative
+    background-color white
+
+slide
+    display block
+    position absolute
+    width 100vw
+    height 100vh
+    transform translateX(100vw)
+    padding 40px 60px
+    box-sizing border-box
+    line-height 1.1em
+    color cor_texto
+    background-color white
+    line-height 36px
+    letter-spacing -1px
+    font-size 40px
+    header
+        margin-bottom 1em
+
+.logo-wrapper
+.svg_wrapper
+.svg-wrapper
+.middle-center
+    vertical_align()
+    position fixed
+    z-index 1000
+
+    .svg_wrapper_below_header
+    .svg-wrapper-below-header
+        top 70%
+
+.animation
+    opacity 0
+
+
+.abertura
+    &:after
+        background none
+    .pagination
+        display none
+
+
+.capa
+.capitulo
+.pergunta
+.secao
+    background cor_titulo
+    text-align center
+    header
+        vertical_align()
+        width 80%
+        z-index 100
+        &:before
+            content ''
+            vertical_align()
+            width 100vw
+            height 30vh
+            background rgba(0, 0, 0, 0.65)
+            z-index -1
+    section
+        position static
+        height 100%
+    h1
+        color white
+        font-size 1.5em
+        text-shadow 1px 1px 3px rgba(0, 0, 0, 0.6)
+    h2
+        color #24FF01
+        font-size 1.2em
+        font-weight 500
+        text-shadow 1px 1px 3px rgba(0, 0, 0, 0.6)
+    &:after
+        background none
+    .pagination
+        display none
+    .small
+        font-size 0.85em
+
+
+
+blockquote
+    vertical_align()
+    font-family 'Slabo 27px', serif
+
+.capa
+    background #0003FB
+
+.pergunta
+.secao
+    background white
+    text-align center
+    h1
+        color lighten(cor_titulo, 90%)
+    h2
+        color lighten(cor_subtitulo, 90%)
+
+h1
+h2
+    margin 0.25em 0
+    font-family 'Open Sans', Arial, sans-serif
+    line-height 1em
+    text-shadow 1px 1px 3px rgba(0, 0, 0, 0.3)
+
+
+
+h1
+    font-size 1.3em
+    color cor_titulo
+    .condensed
+        font-family 'Open Sans Condensed'
+
+h2
+    font-size 1.1em
+    font-family 'Roboto'
+    color cor_subtitulo
+    .condensed
+        font-family 'Roboto Condensed'
+
+.condensed
+    h1
+        font-family 'Open Sans Condensed'
+    h2
+        font-family 'Roboto Condensed'
+
+
+ul
+ol
+    font-size 0.8em
+
+li
+    line-height 1.3em
+    margin-top 0.5em
+    p
+        font-size 1em
+
+
+section
+    display block
+    font-size 1.1em
+    line-height 1.1em
+    position relative
+    min-height 480px
+
+    &:first-child
+        height 100%
+
+div.pagination
+    position absolute
+    bottom 0.5em
+    right 60px
+    font-size 0.4em
+    color cor_titulo
+    display block
+    transition all .2s
+    &:hover
+        font-size 0.75em
+
+div.pagination_container
+    position absolute
+    bottom 0
+    left 0
+    width 100%
+    height 2.5em
+    margin auto
+    opacity 0
+
+    &:hover
+        opacity 1
+        transition 0.3s
+
+    .container
+        vertical_align()
+        background-color rgba(0, 101, 255, 0.5)
+        line-height 2em
+
+#previous_slide
+#next_slide
+
+    font-weight bold
+    font-size 20px
+    width 50px
+    text-align center
+    display inline-block
+
+    &:hover
+        cursor pointer
+        color white
+
+img
+    position absolute
+    top 0%
+    left 0%
+    margin 0
+    margin-right -50%
+    transform translate(0%, 0%)
+    width 100%
+    height 100%
+    object-fit contain
+    z-index -1
+    &.no-fit
+        object-fit none
+    &.keep-size-position
+    &.no-resize
+        width auto
+        height auto
+        object-fit none
+        vertical_align()
+
+
+.background img
+img.background
+    object-fit cover
+    z-index 0
+
+
+video
+    position absolute
+    top 0
+    left 0
+    transform none
+    width auto
+    height auto
+    margin auto
+    max-width 100%
+    max-height 100%
+
+
+kbd
+code
+    //padding 0.05em 0.2em
+    //background literal_background
+    //border-radius 5px
+    color cor_code
+    font-family 'Fira Code', 'PT Mono', monospace
+    white-space nowrap
+
+kbd
+    background none
+
+.small
+    font-size 0.7em
+
+.bottom
+    position absolute
+    bottom 0
+
+.mais-topo
+    margin-top 2em
+
+.destaque
+    color cor_destaque
+
+
+li
+    margin-top 0.75em
+
+pre
+    font-size 0.5em
+    line-height 1.4em
+    background #fff
+    border 1px solid #c6c6c6
+    box-shadow 3px 3px 4px rgba(0, 0, 0, 0.5)
+    padding 0.5em
+    code
+        background transparent
+        padding 0
+    &.small
+        font-size 0.45em
+    &.smaller
+        font-size 0.4em
+
+table
+    font-size 0.6em
+    line-height 1.1em
+    margin 0 auto
+    &.center
+        text-align center
+    img
+        position inherit
+        transform none
+
+    tbody
+        vertical-align inherit
+
+    th
+    td
+        padding 0.5em
+        border 3px solid #b6b6b6
+    th
+        background literal_background
+    &.option_list td:first-child
+        white-space nowrap
+    &.emblems td:nth-child(3)
+        text-align left
+    &[data-language]
+        font-size inherit
+        text-align left
+        width 100%
+        th
+        td
+            padding 0
+            margin 0
+            border none
+    &.small
+    &.smaller
+        font-size 1.3rem
+        pre
+            font-size 1rem
+            line-height 1.4rem
+
+.invisible
+    display none
+
+
+.two-columns > section > div
+.two-columns > div:not(.pagination)
+    column(1/2)
+
+    & *:first-child
+        margin-top
+
+
+.three-columns > section > div
+.three-columns > div:not(.pagination)
+    column(1/3)
+
+    & *:first-child
+        margin-top 0
+
+
+dl
+    font-size 0.7em
+
+dt
+    margin-top 0.75em
+    line-height 1.5em
+
+dd
+    line-height 1em
+
+
+// Inspiração para as mensagens de aviso
+// ref: http://www.html5rocks.com/en/tutorials/forms/html5forms/
+
+color_tip = #00a3d9
+color_fact = #59b200
+color_warning = #ED8c32
+color_important = #ED4732
+color_caution = #E0C900
+
+
+nota(msg, color_nota, color_text = white)
+    border-color color_nota
+    &:before
+        content msg
+        background color_nota
+        color color_text
+
+p
+    font-size 0.8em
+    margin-top 1em
+    line-height 1.1em
+    img
+        text-align center
+
+
+aside
+    font-size 0.6em
+    line-height 1.3em
+    position relative
+    clear both
+    border-top 1px dotted #CBCBCB
+    border-bottom 1px dotted #CBCBCB
+    color #333
+    font-style italic
+    margin 2em 0 1.5em 0
+    padding 1.5em 0.7em 1em
+    & *:first-child
+        margin-top 0
+    p
+    pre
+    ul
+    ol
+        font-size inherit
+    em
+    code
+        font-style normal
+        padding 0 0.25em
+    &:before
+        content '!'
+        position absolute
+        color white
+        top 0
+        left 0
+        box-shadow 0 2px 4px rgba(0, 0, 0, 0.5)
+        border-radius 2px
+        padding 5px 12px 6px 8px
+        line-height 1.25em
+        transform rotate(-5deg) translateX(-25px) translateY(-25px)
+
+    &.tip
+        nota('Tip!', color_tip)
+    &.note
+        nota('Note:', color_fact)
+    &.attention
+    &.warning
+        nota('Attention!', color_warning)
+    &.important
+        nota('Important!', color_important)
+    &.caution
+        nota('Caution!', color_caution, black)
+
+
+.atividade-redmine
+    img
+        width 48px
+
+
+
+@media print
+
+    body
+        background white
+        filter grayscale(100%)
+
+    slide
+    .step
+        border-radius 0
+        border 3px solid rgba(0, 0, 0, .3)
+        page-break-after always
+        &:not(.active)
+            opacity 1
+        &:after
+            z-index 0
+
+    .capa
+    .capitulo
+    .pergunta
+    .secao
+        background white
+        h1
+            color white
+        h2
+            color darken(#fff, 15%)
+        h1
+        h2
+            text-shadow 1px 1px 3px rgba(0, 0, 0, 0.3)
+    img
+        z-index 0

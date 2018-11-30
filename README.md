@@ -13,8 +13,8 @@ b. Open the folder RST2HTML5SLIDES_HOME/rst2html5slides and run rst2html5slides 
 > python rst2html5slides.py
 
 3. use the simple file simple-exo.rst that you can find in the folder sample, execute the following command :
-> rst2html5slides --template PATH_TEMPLATE/exo-template.html simple-exo.rst simple-exo.html
+> rst2html5slides --template PATH_TEMPLATE/exo-template.html exo-sample.rst exo-sample.html
 
 or
 
-> python RST2HTML5SLIDES_HOME/rst2html5slides.py --template PATH_TEMPLATE/exo-template.html simple-exo.rst simple-exo.html
+> python RST2HTML5SLIDES_HOME/rst2html5slides.py --template PATH_TEMPLATE/exo-template.html exo-sample.rst exo-sample.html
